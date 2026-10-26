@@ -1,0 +1,9 @@
+class task1:
+    def __init__(self, values):
+        self.data = values
+    def count_unique(self):
+        return sum(1 for x in self.data if self.data.count(x) == 1)
+n = int(input("Введите N: "))
+a = list(map(int, input("Введите числа через пробел: ").split()))
+
+print("Количество чисел встречающихся один раз:", task1(a).count_unique())
