@@ -1,1 +1,36 @@
-
+def latin_square(matrix):
+    if not matrix:
+        return False
+    n = len(matrix)
+    for row in matrix:
+        if len(row) != n:
+            return False
+    expected_set = set(range(1, n + 1))
+    for row in matrix:
+        if set(row) != expected_set:
+            return False
+            
+    for col in range(n):
+        column_elements = [matrix[row][col] for row in range(n)]
+        if set(column_elements) != expected_set:
+            return False
+    return True
+latin3 = [
+    [1, 2, 3],
+    [2, 3, 1],
+    [3, 1, 2]
+]
+nolatin3 = [
+    [1, 2, 3],
+    [2, 3, 1],
+    [3, 2, 1]
+]
+latin4 = [
+    [1, 2, 3, 4],
+    [2, 3, 4, 1],
+    [3, 4, 1, 2],
+    [4, 1, 2, 3]
+]
+print("Матрица 1:", latin_square(latin3))
+print("Матрица 2:", latin_square(nolatin3))
+print("Матрица 3:", latin_square(latin4))
